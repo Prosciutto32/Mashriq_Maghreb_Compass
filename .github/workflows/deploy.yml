@@ -26,12 +26,16 @@ jobs:
           mkdir -p src/lib/firebase
           # Or if using base64:
           echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS  }}" | base64 --decode > src/lib/firebase/serviceAccount.json
-          cat src/lib/firebase/serviceAccount.json
-           
-          ls -l src/lib/firebase/serviceAccount.json # Check file size and permissions
+          
 
       - name: Build SvelteKit app
-        run: npm run build
+        run: |
+              echo "VAPID_PUBLIC_KEY received by build step: ${VAPID_PUBLIC_KEY}"
+              # You could even try to validate it in the shell, though not strictly necessary
+               echo "${VAPID_PUBLIC_KEY}" | grep '=' || echo "No equals signs found (good)"
+               echo "${VAPID_PUBLIC_KEY}" | grep '+' || echo "No plus signs found (good)"
+               echo "${VAPID_PUBLIC_KEY}" | grep '/' || echo "No slash signs found (good)"
+              npm run build
         env:
           # Make sure ADMIN_EMAIL is available during the build
           ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
