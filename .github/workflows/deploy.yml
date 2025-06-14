@@ -20,8 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      
+      - name: Create serviceAccount.json
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}' > src/lib/firebase/serviceAccount.json
+        env:
+          # This ensures the secret is available in this step
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}
 
 
 
