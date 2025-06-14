@@ -26,7 +26,19 @@ jobs:
           mkdir -p src/lib/firebase
           # Or if using base64:
           echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS  }}" | base64 --decode > src/lib/firebase/serviceAccount.json
-          
+      - name: Debug VAPID Public Key Length and Content
+        run: |
+              echo "VAPID_PUBLIC_KEY received by build step: '${{ secrets.VAPID_PUBLIC_KEY }}'" # Use quotes to see leading/trailing spaces
+              echo "Length of VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}:" $(echo -n "${{ secrets.VAPID_PUBLIC_KEY }}" | wc -c)
+              echo "Checking for problem characters:"
+              echo "${{ secrets.VAPID_PUBLIC_KEY }}" | grep '=' && echo "Found equals sign!" || echo "No equals signs found (good)"
+              echo "${{ secrets.VAPID_PUBLIC_KEY }}" | grep '+' && echo "Found plus sign!" || echo "No plus signs found (good)"
+              echo "${{ secrets.VAPID_PUBLIC_KEY }}" | grep '/' && echo "Found slash sign!" || echo "No slash signs found (good)"
+              # Use od -c to see any invisible characters
+              echo "Raw byte representation:"
+              echo "${{ secrets.VAPID_PUBLIC_KEY }}" | od -c
+        env:
+              VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }} # Ensure it's passed for the build step too!
 
       - name: Build SvelteKit app
         run: |
