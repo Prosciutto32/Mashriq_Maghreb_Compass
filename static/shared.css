@@ -1,0 +1,33 @@
+:root {
+    --color-bg: #0d100f;           /* Woodsmoke */
+    --color-text: #C5C6C5;         /* Pumice */
+    --color-text-secondary: #232323; /* Grigio più scuro, meno dominante */
+    --color-highlight: #a89975; /* Giallo caldo, per evidenziare */
+    --color-muted: #848484;        /* Gray */
+    --color-accent: #848C89;       /* Gunsmoke */
+    --color-error: #FF4C4C;         /* Red */
+    --color-warning: #e6c34d; /* Yellow */
+    --color-surface: #1a1d1b; /* sfondo secondario scuro, per superfici in rilievo */
+    --color-background-cancel-button-hover: rgba(255, 76, 76, 0.15);
+    --color-approved:#003e30;
+    --color-bg-approved:#55efc4;
+
+    --border-radius: 2em;
+}
+
+body {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    height: 100%;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
