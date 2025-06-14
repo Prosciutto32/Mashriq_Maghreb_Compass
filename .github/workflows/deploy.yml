@@ -46,9 +46,19 @@ jobs:
           VITE_AUTH_DOMAIN: ${{ secrets.VITE_AUTH_DOMAIN }}
           VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
 
+      - name: Decode Firebase Service Account for Deploy
+        id: decode_firebase_sa
+        run: |
+          # Decode the Base64 secret and set it as a step output
+          # The | jq -rc '.' part ensures it's a single-line, compact JSON string without extra whitespace
+          DECODED_SA=$(echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}" | base64 --decode | jq -rc '.')
+          echo "firebase_sa_json=${DECODED_SA}" >> "$GITHUB_OUTPUT"
+        shell: bash
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}
+          # Use the decoded service account JSON from the previous step's output
+          firebaseServiceAccount: ${{ steps.decode_firebase_sa.outputs.firebase_sa_json }}
           channelId: live
