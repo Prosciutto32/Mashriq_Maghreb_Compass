@@ -32,6 +32,9 @@ jobs:
 
       - name: Build SvelteKit app
         run: npm run build
+        env:
+          # Make sure ADMIN_EMAIL is available during the build
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
