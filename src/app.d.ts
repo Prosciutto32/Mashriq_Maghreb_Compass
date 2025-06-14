@@ -5,9 +5,7 @@ import '@sveltejs/kit';
 
 declare global {
 	namespace App {
-		interface Locals {
-			email?: string;
-		}
+		
 	}
 }
 
