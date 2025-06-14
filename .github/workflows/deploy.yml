@@ -20,6 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      
+      - name: Create Firebase Service Account file
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" > src/lib/firebase/serviceAccount.json
+
 
       - name: Build SvelteKit app
         run: npm run build
@@ -28,5 +32,5 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}
           channelId: live
