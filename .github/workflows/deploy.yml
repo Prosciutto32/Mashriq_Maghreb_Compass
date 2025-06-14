@@ -20,13 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      - name: Create serviceAccount.json
+        
+      - name: Create serviceAccount.json from Base64 secret
         run: |
-          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}' > src/lib/firebase/serviceAccount.json
-        env:
-          # This ensures the secret is available in this step
-          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SITE_MASHRIQ_MAGHREB_COMPASS }}
-
+          mkdir -p src/lib/firebase
+          echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" | base64 --decode > src/lib/firebase/serviceAccount.json
 
 
       - name: Build SvelteKit app
