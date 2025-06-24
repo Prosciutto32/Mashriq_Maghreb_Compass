@@ -78,20 +78,21 @@
     <h2>Basic Information</h2>
     <label>
         <p class="sub">Title</p>
-        <input type="text" placeholder="full name" required bind:value={title} />
+        <input type="text" placeholder="full name" bind:value={title} />
     </label>
 
     <label>
-        <p class="sub">Description</p>
+        <p class="sub">Description*</p>
         <textarea placeholder="description" required bind:value={description}></textarea>
     </label>
 
     <label>
-        <p class="span">Photo</p>
+        <p class="span">Photo*</p>
         <input
             type="file"
             accept="image/*"
             onchange={handleFileChange}
+            required
         />
     </label>
     <button type="submit">Submit</button>

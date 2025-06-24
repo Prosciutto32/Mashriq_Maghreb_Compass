@@ -215,14 +215,20 @@
                 <input type="text"
                     bind:value={editingTitle}
                     placeholder="Edit title"
+					required
                     >
                 <textarea
                     bind:value={editingText}
                     placeholder="New text"
-                    
+                    required
                 ></textarea>
 
-	            <input type="file" accept="image/*" onchange={handleFileChange}  />
+	            <input 
+					type="file"
+					accept="image/*" 
+					onchange={handleFileChange} 
+					required 
+				/>
                 <button type="submit">Update</button>
                 <button type="button" class="cancel" onclick={() => showEditModal = false}>Cancel</button>
             </form>

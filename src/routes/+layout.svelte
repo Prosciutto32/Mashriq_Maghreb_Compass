@@ -8,7 +8,7 @@
     let { children } = $props();
     const unsuscribe = auth.onAuthStateChanged (async (user) => {
             if (user) {
-                user.getIdTokenResult(true) // true forces token refresh
+                user.getIdTokenResult(true) 
                 .then((idTokenResult) => {
                     // Access custom claims
                     if (idTokenResult.claims.admin) {

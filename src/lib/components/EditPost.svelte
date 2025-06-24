@@ -88,7 +88,7 @@
 
       if (res.ok) {
         console.log("Post deleted successfully");
-        goto('/login/admin_dashboard/edit_posts'); // Redirect to the posts list
+        location.reload();
       } else {
         console.error("Error deleting post:", res.statusText);
       }
@@ -108,15 +108,16 @@
           <input type="text" bind:value={new_title} />
       </label>
       <label>
-          Description:
-          <textarea bind:value={new_description}></textarea>
+          Description*:
+          <textarea bind:value={new_description} required></textarea>
       </label>
       <label>
-          Photo:
+          Photo*:
           <input
               type="file"
               accept="image/*"
               onchange={handleFileChange}
+              required
           />
       </label>
       

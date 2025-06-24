@@ -29,5 +29,7 @@ export const authHandler ={
         return updatePassword(user, newPassword);
     }
 
+    
+
 }
 

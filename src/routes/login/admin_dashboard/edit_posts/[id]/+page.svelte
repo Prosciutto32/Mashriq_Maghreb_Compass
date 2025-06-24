@@ -54,11 +54,11 @@
           createdAt: data.createdAt || ''
         };
       } else {
-        error = "Nessuna richiesta trovata";
+        error = "Nessun post trovato";
       }
 
     } catch (e) {
-      error = "Errore nel recupero delle richieste";
+      error = "Errore nel recupero dei post";
       console.error(e);
     } finally {
       loading = false;
@@ -71,13 +71,14 @@
       <p class="loading">Caricamento post...</p>
   {:else if error}
       <p class="error">{error}</p>
+  {:else}
+    <div class="post">
+      <ShowPost {post} />
+    </div>
+    <div class="edit">
+      <EditPost post_id={post_id} post={post} fetchFunction = {fetchPost} />
+    </div>
   {/if}
-  <div class="post">
-    <ShowPost {post} />
-  </div>
-  <div class="edit">
-    <EditPost post_id={post_id} post={post} fetchFunction = {fetchPost} />
-  </div>
 
 </div>
 
