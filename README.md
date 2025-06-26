@@ -1,38 +1,46 @@
-# sv
+# Mashriq Maghreb Compass
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Il Sito presenta 3 user con il quale si può accedere
+ - Admin
+ - Staff
+ - User
 
-## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Accedere come User
 
-```bash
-# create a new project in the current directory
-npx sv create
+l'email è user@gmail.com
+lo user può:
+ - fare una richiesta
+ - richiedere di revisionare una richiesta
+ - editare il suo profilo
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Accedere come Staff
 
-## Developing
+l'email è staff@gmail.com
+lo staff può:
+ - editare il suo profilo
+ - accettare una richiesta
+ - rifiutare una richiesta
+ - fare un post sulla home page
+ - eliminare i post sulla home page
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Accedere come Admin
 
-```bash
-npm run dev
+l'email è admin@gmail.com
+l' admin può:
+ - editare il suo profilo
+ - accettare una richiesta 
+ - rifiutare una richiesta
+ - revisionare una richiesta
+ - fare un post sulla home page
+ - eliminare i post sulla home page
+ - promuovere uno user a staff e viceversa
+ - eliminare uno user
+ - editare la mission
+ - editare la vision
+ - modificare i contatti (Create, Edit, Delete)
+ - modificare i values (Create, Edit, Delete)
+ - modificare gli about (Create, Edit, Delete)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Password
+    la password è uguale per tutti e tre gli user ed è 123456
